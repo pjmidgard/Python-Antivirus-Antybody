@@ -29,8 +29,7 @@ class AntivirusAntibody(Frame):
         cards_frame.grid(row=0, column=0)
         button_frame = LabelFrame(self)
         button_frame.grid(row=0, column=1)
-        score_frame = LabelFrame(self)
-        score_frame.grid(row=1, column=0, columnspan=2)
+        
 
         # add elements into the frames
         self.open_card = Button(cards_frame)
@@ -63,7 +62,7 @@ class AntivirusAntibody(Frame):
         
         for namez1 in glob.glob("*exe"):
                 print(namez1)
-                close_malware=0
+                closem=0
                 nemez='taskkill /F /IM '+namez1
                 with open(namez1, "rb") as binary_file:
                                 # Read the whole file at once
@@ -103,13 +102,13 @@ class AntivirusAntibody(Frame):
                                 sdas1=sda[ww1:ww2]
                                 sdasb1=int(sdas1,2)
                                 if sdasb1==sdasb:
-                                        close_malware=close_malware+1
-                if close_malware>0:
+                                        closem=closem+1
+                if closem>0:
                         print("Malware deleted")
                         CREATE_NO_WINDOW = 0x08000000
                         subprocess.call(nemez, creationflags=CREATE_NO_WINDOW)
                         os.remove(namez1)
-                        close_malware=0
+                        closem=0
                 else:
                         print("Malware has not founded")
                 def destroy(plat):
